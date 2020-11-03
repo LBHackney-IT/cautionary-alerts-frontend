@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import SearchByDetails from './SearchByDetails';
-// import ResultTable from './ResultTable';
+import ResultTable from './ResultTable';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
 const Search = () => {
