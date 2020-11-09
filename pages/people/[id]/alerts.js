@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo';
-
 import Alerts from 'components/Alerts/Alerts';
 import BackButton from 'components/Layout/BackButton/BackButton';
 import PersonView from 'components/PersonView/PersonView';

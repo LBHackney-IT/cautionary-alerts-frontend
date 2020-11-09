@@ -2,22 +2,18 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useForm } from 'react-hook-form';
-// import isValid from 'date-fns/isValid';
-// import isPast from 'date-fns/isPast';
-
 import { Button, TextInput } from 'components/Form';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
-import { getResidents } from 'utils/api/residents.js';
 
-const SearchByDetails = ({ onResult, setLoading }) => {
+const SearchByDetails = ({ setFormData }) => {
   const [formError, setFormError] = useState();
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = async (formData) => {
     setFormError(null);
-    setLoading(true);
+
     return !formData.first_name && !formData.last_name
-      ? setFormError('You need to enter a name ')
-      : onResult(getResidents(formData));
+      ? setFormError('You need to enter a first or last name')
+      : setFormData(formData);
   };
 
   return (
@@ -42,6 +38,16 @@ const SearchByDetails = ({ onResult, setLoading }) => {
               register={register}
             />
           </div>
+
+          {/* <div className="govuk-grid-column-one-half">
+            <TextInput
+              label="Postcode:"
+              labelSize="s"
+              name="postcode"
+              error={errors.postcode}
+              register={register}
+            />
+          </div> */}
         </div>
 
         {formError && <ErrorMessage label={formError} />}
@@ -52,7 +58,7 @@ const SearchByDetails = ({ onResult, setLoading }) => {
 };
 
 SearchByDetails.propTypes = {
-  onResult: PropTypes.func.isRequired,
+  setFormData: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
 };
 

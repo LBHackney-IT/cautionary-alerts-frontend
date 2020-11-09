@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 
-// const onClick = (url) => window.open(url, '_blank');
-
 const AlertsEntry = ({
   personId,
   firstName,
   lastName,
   formName,
   dateOfBirth,
+
   // caseFormUrl,
 }) => (
   <tr
@@ -59,7 +58,6 @@ AlertsTable.propTypes = {
       lastName: PropTypes.string.isRequired,
       formName: PropTypes.string.isRequired,
       dateOfBirth: PropTypes.string.isRequired,
-      caseFormUrl: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

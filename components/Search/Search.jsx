@@ -1,34 +1,36 @@
-import { useState, useCallback } from 'react';
-
+import { useState, useEffect } from 'react';
 import SearchByDetails from './SearchByDetails';
-import ResultTable from './ResultTable';
+import ResultTable from './ResultsTable';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
+import { getResidents } from 'utils/api/residents';
 
 const Search = () => {
+  const [formData, setFormData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState();
-  const onResult = useCallback(async (results) => {
+
+  const searchForResidents = async () => {
     try {
-      const data = await results;
-      setLoading(false);
-      setError(null);
-      setResults(Array.isArray(data) ? data : [data]);
+      const data = await getResidents(formData);
+      setResults(data);
     } catch (e) {
-      setLoading(false);
-      setError(e.response.data);
-      setResults(null);
+      setError('ops');
     }
-  });
+  };
+
+  useEffect(() => {
+    formData && searchForResidents(formData);
+  }, [formData]);
   return (
     <>
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
-      <SearchByDetails onResult={onResult} setLoading={setLoading} />
+      <SearchByDetails setFormData={setFormData} setLoading={setLoading} />
       {loading ? (
         <div>Searching...</div>
       ) : (
         <>
-          {results && <ResultTable results={results} />}
+          {results?.length > 0 && <ResultTable results={results} />}
           {error && <ErrorMessage label={error} />}
         </>
       )}
