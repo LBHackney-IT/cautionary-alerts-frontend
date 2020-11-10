@@ -9,10 +9,10 @@ const PersonView = ({ personId }) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
-  const getPerson = async (personId) => {
+  const getPerson = async (tenancyReference) => {
     setLoading(false);
     try {
-      const data = await getResident(personId);
+      const data = await getResident(tenancyReference);
       setPerson(data);
       setError(null);
     } catch (e) {
@@ -32,7 +32,7 @@ const PersonView = ({ personId }) => {
       ) : (
         <>
           {error && <ErrorMessage label={error} />}
-          {person && <PersonDetails {...person} />}
+          {person && <PersonDetails person={person} />}
         </>
       )}
     </>

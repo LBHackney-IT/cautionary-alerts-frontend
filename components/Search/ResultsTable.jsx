@@ -2,7 +2,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 const ResultEntry = ({ firstName, lastName, address, tenancyReference }) => (
-  <Link href={`/search`}>
+  <Link href={`/people/${tenancyReference}`}>
     <tr className="govuk-table__row govuk-table__row--clickable">
       {/* <td className="govuk-table__cell">{personNumber}</td> */}
       <td className="govuk-table__cell">{tenancyReference}</td>
@@ -43,10 +43,9 @@ const ResultTable = ({ results }) => (
 ResultTable.propTypes = {
   results: PropTypes.arrayOf(
     PropTypes.shape({
-      personNumber: PropTypes.string,
+      tenancyReference: PropTypes.string,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
-      addressList: PropTypes.array.isRequired,
     })
   ).isRequired,
 };

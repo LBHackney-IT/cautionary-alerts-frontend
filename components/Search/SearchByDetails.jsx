@@ -38,16 +38,6 @@ const SearchByDetails = ({ setFormData }) => {
               register={register}
             />
           </div>
-
-          {/* <div className="govuk-grid-column-one-half">
-            <TextInput
-              label="Postcode:"
-              labelSize="s"
-              name="postcode"
-              error={errors.postcode}
-              register={register}
-            />
-          </div> */}
         </div>
 
         {formError && <ErrorMessage label={formError} />}

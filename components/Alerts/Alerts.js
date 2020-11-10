@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import AlertsTable from './AlertsTable';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { getAlerts } from 'utils/api/alerts';

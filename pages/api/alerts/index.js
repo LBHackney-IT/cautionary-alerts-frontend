@@ -3,8 +3,7 @@ import axios from 'axios';
 const { ENDPOINT_ALERTS_API, KEY_HOUSING } = process.env;
 
 export const getAlerts = async (params) => {
-  console.log(ENDPOINT_ALERTS_API);
-  const { data } = await axios.get(`${ENDPOINT_ALERTS_API}`, {
+  const { data } = await axios.get(`${ENDPOINT_ALERTS_API}}`, {
     headers: {
       Authorization: KEY_HOUSING,
     },
