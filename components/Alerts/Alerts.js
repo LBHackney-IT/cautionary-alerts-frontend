@@ -10,10 +10,10 @@ const Alerts = ({ id }) => {
   const [alerts, setAlerts] = useState();
   const getPersonAlerts = useCallback(async (id) => {
     try {
-      const data = await getAlerts(id);
+      const data = await getAlerts({ tag_ref: id });
       setLoading(false);
       setError(null);
-      setAlerts(Array.isArray(data) ? data : [data]);
+      setAlerts(data);
     } catch (e) {
       setLoading(false);
       setError(e.response.data);

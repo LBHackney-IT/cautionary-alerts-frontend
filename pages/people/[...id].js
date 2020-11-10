@@ -10,8 +10,7 @@ const AlertsPage = ({ query }) => {
       <NextSeo title={`#${query.id} Alerts`} noindex />
       <BackButton />
       <PersonView personId={`${query.id[0]}/people/${query.id[1]}`} />
-      <h2>Cautionary Alerts for #{query.id}</h2>
-      <Alerts {...query} />
+      <Alerts id={`${query.id[0]}/${query.id[1]}`} />
     </div>
   );
 };

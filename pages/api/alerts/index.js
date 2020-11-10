@@ -17,10 +17,12 @@ export default async (req, res) => {
   console.log(req.query);
   try {
     const data = await getAlerts(req.query);
-    res.status(200).json(data);
-    console.log(data);
+    if (data[0]?.alerts) {
+      res.status(200).json(data[0].alerts);
+    }
+    res.status(404).json('no alerts found');
   } catch (error) {
-    res.status(200).json(error);
+    res.status(500).json(error);
     console.log(error?.response);
   }
 };

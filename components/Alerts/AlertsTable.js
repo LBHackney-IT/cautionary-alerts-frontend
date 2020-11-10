@@ -1,70 +1,34 @@
 // import PropTypes from 'prop-types';
 
-// {
-//     "contacts": [
-//         {
-//             "tenancyAgreementReference": "024787/01",
-//             "personNumber": "1",
-//             "contactNumber": "33190",
-//             "alerts": [
-//                 {
-//                     "dateModified": "2010-06-21",
-//                     "modifiedBy": "NHUSSAIN",
-//                     "startDate": "2010-06-21",
-//                     "endDate": null,
-//                     "alertCode": "CX",
-//                     "description": "Do Not Attend - Refer to Authorising Officer"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-
-const AlertsEntry = ({
-  contacts,
-  // personNumber,
-  tenancyAgreementReference,
-  // alerts,
-}) => (
-  <tr
-    className="govuk-table__row govuk-table__row--clickable"
-    // onClick={() => onClick(caseFormUrl)}
-  >
-    <td className="govuk-table__cell">{contacts}</td>}
-    {
-      console.log({ tenancyAgreementReference })
-      /* <td className="govuk-table__cell">
-      {firstName} {lastName}
-    </td>
-    <td className="govuk-table__cell">{formName}</td>
-    <td className="govuk-table__cell">
-      {new Date(dateOfBirth).toLocaleDateString('en-GB')}
-    </td> */
-    }
-  </tr>
+const AlertsEntry = ({ description, alertCode, modifiedBy, startDate }) => (
+  <>
+    <tr className="govuk-table__row ">
+      <td className="govuk-table__cell">
+        <strong>Description: {description}</strong>
+      </td>
+    </tr>
+    <tr className="govuk-table__row ">
+      <td className="govuk-table__cell">Start Date: {startDate}</td>
+    </tr>
+    <tr className="govuk-table__row ">
+      <td className="govuk-table__cell">Modified By: {modifiedBy}</td>
+    </tr>
+    <tr className="govuk-table__row ">
+      <td className="govuk-table__cell">Alert Code: {alertCode}</td>
+    </tr>
+  </>
 );
 
 const AlertsTable = ({ alerts }) => (
   <table className="govuk-table">
-    <thead className="govuk-table__head">
-      <tr className="govuk-table__row">
-        <th scope="col" className="govuk-table__header">
-          Person ID
-        </th>
-        <th scope="col" className="govuk-table__header">
-          Name
-        </th>
-        <th scope="col" className="govuk-table__header">
-          Alerts
-        </th>
-        <th scope="col" className="govuk-table__header">
-          DOB
-        </th>
-      </tr>
-    </thead>
+    {alerts.length > 0 && (
+      <thead className="govuk-table__head">
+        <h3>Cautionary Alerts:</h3>{' '}
+      </thead>
+    )}
     <tbody className="govuk-table__body">
       {alerts.map((result) => (
-        <AlertsEntry key={result.personId} {...result} />
+        <AlertsEntry {...result} />
       ))}
     </tbody>
   </table>
