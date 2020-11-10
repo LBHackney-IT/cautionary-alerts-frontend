@@ -23,25 +23,28 @@
 const AlertsEntry = ({
   contacts,
   // personNumber,
-  // tenancyAgreementReference,
+  tenancyAgreementReference,
   // alerts,
 }) => (
   <tr
     className="govuk-table__row govuk-table__row--clickable"
     // onClick={() => onClick(caseFormUrl)}
   >
-    <td className="govuk-table__cell">{contacts[0]}</td>
-    {/* <td className="govuk-table__cell">
+    <td className="govuk-table__cell">{contacts}</td>}
+    {
+      console.log({ tenancyAgreementReference })
+      /* <td className="govuk-table__cell">
       {firstName} {lastName}
     </td>
     <td className="govuk-table__cell">{formName}</td>
     <td className="govuk-table__cell">
       {new Date(dateOfBirth).toLocaleDateString('en-GB')}
-    </td> */}
+    </td> */
+    }
   </tr>
 );
 
-const AlertsTable = ({ contacts }) => (
+const AlertsTable = ({ alerts }) => (
   <table className="govuk-table">
     <thead className="govuk-table__head">
       <tr className="govuk-table__row">
@@ -60,10 +63,9 @@ const AlertsTable = ({ contacts }) => (
       </tr>
     </thead>
     <tbody className="govuk-table__body">
-      {contacts.map((result) => (
+      {alerts.map((result) => (
         <AlertsEntry key={result.personId} {...result} />
       ))}
-      {console.log(contacts)}
     </tbody>
   </table>
 );

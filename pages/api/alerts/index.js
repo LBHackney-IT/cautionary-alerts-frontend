@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-const { ENDPOINT_ALERTS_API, KEY_HOUSING } = process.env;
+const { ENDPOINT_ALERTS_API, KEY_ALERTS } = process.env;
 
 export const getAlerts = async (params) => {
-  const { data } = await axios.get(`${ENDPOINT_ALERTS_API}}`, {
+  const { data } = await axios.get(`${ENDPOINT_ALERTS_API}`, {
     headers: {
-      Authorization: KEY_HOUSING,
+      Authorization: KEY_ALERTS,
     },
     params,
   });
   console.log(data);
-  return data?.residents;
+  return data?.contacts;
 };
 
 export default async (req, res) => {
@@ -20,6 +20,7 @@ export default async (req, res) => {
     res.status(200).json(data);
     console.log(data);
   } catch (error) {
+    res.status(200).json(error);
     console.log(error?.response);
   }
 };

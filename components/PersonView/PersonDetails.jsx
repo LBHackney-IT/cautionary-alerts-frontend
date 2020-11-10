@@ -39,21 +39,20 @@ const PersonDetails = ({ person, emailAddresses }) => (
       <div className="govuk-summary-list__row">
         <dt className="govuk-summary-list__key">Phone Number/s</dt>
         <dd className="govuk-summary-list__value">
-          {person.phoneNumbers &&
-            Object.values(person.phoneNumbers[0])
+          {person?.phoneNumbers[0] &&
+            Object.values(person?.phoneNumbers[0])
               .splice(0, 1)
               .map((number) => <p key={number}>{number}</p>)}
         </dd>
       </div>
-      <div className="govuk-summary-list__row">
-        <dt className="govuk-summary-list__key"></dt>
-        <dd className="govuk-summary-list__value">
-          {person.phoneNumbers &&
-            Object.values(person.phoneNumbers[1])
-              .splice(0, 1)
-              .map((number) => <p key={number}>{number}</p>)}
-        </dd>
-      </div>
+      {person?.phoneNumbers[1]?.phoneNumber && (
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key"></dt>
+          <dd className="govuk-summary-list__value">
+            <p>{person?.phoneNumbers[1].phoneNumber}</p>
+          </dd>
+        </div>
+      )}
     </dl>
   </>
 );

@@ -12,7 +12,6 @@ export const getResident = async ({ houseId, id, ...params }) => {
       params,
     }
   );
-  console.log(data);
   return data;
 };
 
