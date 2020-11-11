@@ -15,7 +15,7 @@ const Search = () => {
       const data = await getResidents(formData);
       setResults(data);
     } catch (e) {
-      setError('ops');
+      setError('Oops an error occurred');
     }
   };
 
