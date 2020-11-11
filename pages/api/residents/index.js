@@ -9,16 +9,15 @@ export const getResident = async (params) => {
     },
     params,
   });
-  console.log(data);
   return data?.residents;
 };
 
 export default async (req, res) => {
-  console.log(req.query);
   try {
     const data = await getResident(req.query);
     res.status(200).json(data);
   } catch (error) {
     console.log(error?.response);
+    res.status(500).json('Unable to get the Residents');
   }
 };

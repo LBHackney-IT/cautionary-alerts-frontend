@@ -16,11 +16,11 @@ export const getResident = async ({ houseId, id, ...params }) => {
 };
 
 export default async (req, res) => {
-  console.log(req.query);
   try {
     const data = await getResident(req.query);
     res.status(200).json(data);
   } catch (error) {
     console.log(error?.response);
+    res.status(500).json('Unable to get the Resident');
   }
 };

@@ -9,20 +9,17 @@ export const getAlerts = async (params) => {
     },
     params,
   });
-  console.log(data);
   return data?.contacts;
 };
 
 export default async (req, res) => {
-  console.log(req.query);
   try {
     const data = await getAlerts(req.query);
-    if (data[0]?.alerts) {
-      res.status(200).json(data[0].alerts);
-    }
-    res.status(404).json('no alerts found');
+    data[0]?.alerts
+      ? res.status(200).json(data[0].alerts)
+      : res.status(404).json('no alerts found');
   } catch (error) {
-    res.status(500).json(error);
     console.log(error?.response);
+    res.status(500).json('Unable to get the Alerts');
   }
 };

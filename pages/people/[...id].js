@@ -4,7 +4,6 @@ import BackButton from 'components/Layout/BackButton/BackButton';
 import PersonView from 'components/PersonView/PersonView';
 
 const AlertsPage = ({ query }) => {
-  console.log(query.id);
   return (
     <div>
       <NextSeo title={`#${query.id} Alerts`} noindex />
