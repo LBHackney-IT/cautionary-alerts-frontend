@@ -1,25 +1,15 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-const ResultEntry = ({
-  personId,
-
-  firstName,
-  lastName,
-  addressList,
-  dateOfBirth,
-}) => (
-  <Link href={`/`}>
+const ResultEntry = ({ firstName, lastName, address, tenancyReference }) => (
+  <Link href={`/people/${tenancyReference}`}>
     <tr className="govuk-table__row govuk-table__row--clickable">
-      <td className="govuk-table__cell">{personId}</td>
+      <td className="govuk-table__cell">{tenancyReference}</td>
       <td className="govuk-table__cell">
         {firstName} {lastName}
       </td>
       <td className="govuk-table__cell">
-        {addressList && Object.values(addressList[0]).join(' ')}
-      </td>
-      <td className="govuk-table__cell">
-        {new Date(dateOfBirth).toLocaleDateString('en-GB')}
+        {address && Object.values(address).splice(1, 2).join(', ')}
       </td>
     </tr>
   </Link>
@@ -31,7 +21,7 @@ const ResultTable = ({ results }) => (
     <thead className="govuk-table__head">
       <tr className="govuk-table__row">
         <th scope="col" className="govuk-table__header">
-          Person ID
+          Tenancy Reference
         </th>
         <th scope="col" className="govuk-table__header">
           Name
@@ -39,14 +29,11 @@ const ResultTable = ({ results }) => (
         <th scope="col" className="govuk-table__header">
           Address
         </th>
-        <th scope="col" className="govuk-table__header">
-          DOB
-        </th>
       </tr>
     </thead>
     <tbody className="govuk-table__body">
       {results.map((result) => (
-        <ResultEntry key={result.personId} {...result} />
+        <ResultEntry key={result} {...result} />
       ))}
     </tbody>
   </table>
@@ -55,11 +42,9 @@ const ResultTable = ({ results }) => (
 ResultTable.propTypes = {
   results: PropTypes.arrayOf(
     PropTypes.shape({
-      personId: PropTypes.string,
+      tenancyReference: PropTypes.string,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
-      addressList: PropTypes.array.isRequired,
-      dateOfBirth: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

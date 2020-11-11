@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo';
-
 import Alerts from 'components/Alerts/Alerts';
 import BackButton from 'components/Layout/BackButton/BackButton';
 import PersonView from 'components/PersonView/PersonView';
@@ -9,9 +8,8 @@ const AlertsPage = ({ query }) => {
     <div>
       <NextSeo title={`#${query.id} Alerts`} noindex />
       <BackButton />
-      <PersonView personId={query.id} />
-      <h1>Cautionary Alerts for #{query.id}</h1>
-      <Alerts {...query} />
+      <PersonView personId={`${query.id[0]}/people/${query.id[1]}`} />
+      <Alerts id={`${query.id[0]}/${query.id[1]}`} />
     </div>
   );
 };
