@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const AlertsEntry = ({ description, alertCode, modifiedBy, startDate }) => (
   <>
@@ -34,16 +34,15 @@ const AlertsTable = ({ alerts }) => (
   </table>
 );
 
-// AlertsTable.propTypes = {
-//   alerts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       personId: PropTypes.number,
-//       firstName: PropTypes.string.isRequired,
-//       lastName: PropTypes.string.isRequired,
-//       formName: PropTypes.string.isRequired,
-//       dateOfBirth: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-// };
+AlertsTable.propTypes = {
+  alerts: PropTypes.arrayOf(
+    PropTypes.shape({
+      startDate: PropTypes.number,
+      modifiedBy: PropTypes.string,
+      alertCode: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 export default AlertsTable;

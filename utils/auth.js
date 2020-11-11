@@ -61,11 +61,7 @@ export const isAuthorised = ({ req, res }, withRedirect = false) => {
       hasAdminPermissions: groups.includes(AUTHORISED_ADMIN_GROUP),
     };
 
-    if (
-      !gssUser.hasAdminPermissions &&
-      !gssUser.hasAdultPermissions &&
-      !gssUser.hasChildrenPermissions
-    ) {
+    if (!gssUser.hasAdminPermissions) {
       return withRedirect && redirectToAcessDenied(res);
     }
     return {

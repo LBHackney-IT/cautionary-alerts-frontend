@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const ResultEntry = ({ firstName, lastName, address, tenancyReference }) => (
   <Link href={`/people/${tenancyReference}`}>
     <tr className="govuk-table__row govuk-table__row--clickable">
-      {/* <td className="govuk-table__cell">{personNumber}</td> */}
       <td className="govuk-table__cell">{tenancyReference}</td>
       <td className="govuk-table__cell">
         {firstName} {lastName}
