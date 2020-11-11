@@ -48,7 +48,7 @@ const PersonDetails = ({ person, emailAddresses }) => (
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">Phone Number/s</dt>
           <dd className="govuk-summary-list__value">
-            <p>{person?.phoneNumbers[1].phoneNumber}</p>
+            <p>{person?.phoneNumbers[0].phoneNumber}</p>
           </dd>
         </div>
       )}
