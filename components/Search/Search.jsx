@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SearchByDetails from './SearchByDetails';
-import ResultTable from './ResultsTable';
+import ResultTable from './ResultTable';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { getResidents } from 'utils/api/residents';
 
