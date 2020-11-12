@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AlertsTable from './AlertsTable';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { getAlerts } from 'utils/api/alerts';
+import Spinner from 'components/Spinner/Spinner';
 
 const Alerts = ({ id }) => {
   const [error, setError] = useState();
@@ -26,14 +27,24 @@ const Alerts = ({ id }) => {
   }, [id]);
   return (
     <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          {alerts && <AlertsTable alerts={alerts} />}
-          {error && <ErrorMessage label={error} />}
-        </>
-      )}
+      <>
+        {loading ? (
+          <div>
+            <Spinner />
+          </div>
+        ) : (
+          <>
+            {alerts?.length > 0 ? (
+              <AlertsTable alerts={alerts} />
+            ) : (
+              <h4>
+                <strong>No cautionary alerts</strong>
+              </h4>
+            )}
+            {error && <ErrorMessage label={error} />}
+          </>
+        )}
+      </>
     </>
   );
 };
