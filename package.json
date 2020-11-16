@@ -16,7 +16,6 @@
     "cookie": "^0.4.1",
     "govuk-frontend": "^3.9.1",
     "jsonwebtoken": "^8.5.1",
-    "lbh-frontend-react": "^0.5.7",
     "next": "9.5.5",
     "next-seo": "^4.14.0",
     "react": "16.14.0",

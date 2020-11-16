@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { isAuthorised } from 'utils/auth';
 
 const { ENDPOINT_HOUSING_API, KEY_HOUSING } = process.env;
 
@@ -16,6 +17,9 @@ export const getResident = async ({ houseId, id, ...params }) => {
 };
 
 export default async (req, res) => {
+  if (!isAuthorised({ req })) {
+    return res.status(401).send('Auth cookie missing.');
+  }
   try {
     const data = await getResident(req.query);
     res.status(200).json(data);
