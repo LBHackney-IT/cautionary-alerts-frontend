@@ -33,7 +33,7 @@ const ResultTable = ({ results }) => (
     </thead>
     <tbody className="govuk-table__body">
       {results.map((result) => (
-        <ResultEntry key={result} {...result} />
+        <ResultEntry key={result.tenancyReference} {...result} />
       ))}
     </tbody>
   </table>
