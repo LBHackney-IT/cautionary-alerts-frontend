@@ -48,8 +48,7 @@ const SearchByDetails = ({ onFormSubmit }) => {
 };
 
 SearchByDetails.propTypes = {
-  setFormData: PropTypes.func.isRequired,
-  setLoading: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchByDetails;
