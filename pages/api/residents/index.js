@@ -10,7 +10,7 @@ export const getResident = async (params) => {
     },
     params,
   });
-  return data?.residents;
+  return data;
 };
 
 export default async (req, res) => {
