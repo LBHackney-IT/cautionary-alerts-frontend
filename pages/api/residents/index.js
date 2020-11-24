@@ -8,7 +8,7 @@ export const getResident = async (params) => {
     headers: {
       Authorization: KEY_HOUSING,
     },
-    params,
+    params: { ...params, active_tenancies_only: true },
   });
   return data;
 };
