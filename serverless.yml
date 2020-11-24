@@ -41,7 +41,7 @@ functions:
       GSSO_TOKEN_NAME=${ssm:/cautionary-alerts-frontend/${self:provider.stage}/gsso-token-name}
       HACKNEY_JWT_SECRET=${ssm:/cautionary-alerts-frontend/${self:provider.stage}/hackney-jwt}
       AUTHORISED_ADMIN_GROUP=${ssm:/cautionary-alerts-frontend/${self:provider.stage}/authorised-admin-group}
-      RESIDENTLOOKUP_ADMIN=${ssm:/cautionary-alerts-frontend/${self:provider.stage}residentlookup-admin-group}
+      RESIDENTLOOKUP_ADMIN=${ssm:/cautionary-alerts-frontend/${self:provider.stage}/residentlookup-admin-group}
       NEXT_PUBLIC_FEEDBACK_LINK=${ssm:/cautionary-alerts-frontend/${self:provider.stage}/next-public-feedback}
 resources:
   Resources:
