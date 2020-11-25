@@ -1,4 +1,4 @@
 module.exports = {
-    distDir: 'build/_next',
-    target: 'server',
-  };  
+  distDir: 'build/_next',
+  target: 'server',
+};
