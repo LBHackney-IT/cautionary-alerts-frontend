@@ -43,6 +43,7 @@ functions:
       AUTHORISED_ADMIN_GROUP: ${ssm:/cautionary-alerts-frontend/${self:provider.stage}/authorised-admin-group}
       RESIDENTLOOKUP_ADMIN: ${ssm:/cautionary-alerts-frontend/${self:provider.stage}/residentlookup-admin-group}
       NEXT_PUBLIC_FEEDBACK_LINK: ${ssm:/cautionary-alerts-frontend/${self:provider.stage}/next-public-feedback}
+      REDIRECT_URL: ${ssm:/cautionary-alerts-frontend/${self:provider.stage}/redirect_url}
 resources:
   Resources:
     CloudFrontDistribution:
