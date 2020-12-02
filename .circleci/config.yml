@@ -110,7 +110,7 @@ workflows:
           requires:
             - build-deploy-staging
           filters:
-            branch:
+            branches:
               only: main
       - assume-role-production:
           context: api-assume-role-production-context
