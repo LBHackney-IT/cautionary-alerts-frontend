@@ -97,18 +97,21 @@ workflows:
             - install-dependencies-and-test
           filters:
             branches:
-              only: staging-aws
+              only: main
       - build-deploy-staging:
           requires:
             - install-dependencies-and-test
             - assume-role-staging
           filters:
             branches:
-              only: staging-aws
+              only: main
       - permit-deploy-production:
           type: approval
           requires:
             - build-deploy-staging
+          filters:
+            branch:
+              only: main
       - assume-role-production:
           context: api-assume-role-production-context
           requires:
@@ -116,7 +119,7 @@ workflows:
             - permit-deploy-production
           filters:
             branches:
-              only: master
+              only: main
       - build-deploy-production:
           requires:
             - permit-deploy-production
