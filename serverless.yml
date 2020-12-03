@@ -103,7 +103,7 @@ custom:
     staging:
       - sg-0166cbf56b7e77af0
     production:
-      - sg-09f954ef111d3b6d5
+      - sg-02cba5e9aff3157b5
   subnets:
     staging:
       - subnet-06d3de1bd9181b0d7
