@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Button, TextInput } from 'components/Form';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
-const SearchByDetails = ({ setFormData }) => {
+const SearchByDetails = ({ onFormSubmit }) => {
   const [formError, setFormError] = useState();
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = async (formData) => {
@@ -13,7 +13,7 @@ const SearchByDetails = ({ setFormData }) => {
 
     return !formData.first_name && !formData.last_name
       ? setFormError('You need to enter a first or last name')
-      : setFormData(formData);
+      : onFormSubmit(formData);
   };
 
   return (
@@ -48,8 +48,7 @@ const SearchByDetails = ({ setFormData }) => {
 };
 
 SearchByDetails.propTypes = {
-  setFormData: PropTypes.func.isRequired,
-  setLoading: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchByDetails;

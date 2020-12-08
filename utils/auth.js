@@ -1,6 +1,5 @@
 import cookie from 'cookie';
 import jsonwebtoken from 'jsonwebtoken';
-
 const { GSSO_TOKEN_NAME } = process.env;
 
 export const AUTH_WHITELIST = ['/login', '/access-denied'];
@@ -41,8 +40,7 @@ export const isAuthorised = ({ req, res }, withRedirect = false) => {
   const {
     HACKNEY_JWT_SECRET,
     AUTHORISED_ADMIN_GROUP,
-    // AUTHORISED_ADULT_GROUP,
-    // AUTHORISED_CHILD_GROUP,
+    RESIDENTLOOKUP_ADMIN,
   } = process.env;
   try {
     const cookies = cookie.parse(req.headers.cookie ?? '');
@@ -59,9 +57,10 @@ export const isAuthorised = ({ req, res }, withRedirect = false) => {
 
     const gssUser = {
       hasAdminPermissions: groups.includes(AUTHORISED_ADMIN_GROUP),
+      hasResidentLookupPermissions: groups.includes(RESIDENTLOOKUP_ADMIN),
     };
 
-    if (!gssUser.hasAdminPermissions) {
+    if (!gssUser.hasAdminPermissions && !gssUser.hasResidentLookupPermissions) {
       return withRedirect && redirectToAcessDenied(res);
     }
     return {

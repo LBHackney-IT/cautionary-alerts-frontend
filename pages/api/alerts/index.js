@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { isAuthorised } from 'utils/auth';
 
 const { ENDPOINT_ALERTS_API, KEY_ALERTS } = process.env;
 
@@ -13,6 +14,9 @@ export const getAlerts = async (params) => {
 };
 
 export default async (req, res) => {
+  if (!isAuthorised({ req })) {
+    return res.status(401).send('Auth cookie missing.');
+  }
   try {
     const data = await getAlerts(req.query);
     data[0]?.alerts
