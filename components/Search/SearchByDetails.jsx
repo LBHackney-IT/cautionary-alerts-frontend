@@ -17,7 +17,7 @@ const SearchByDetails = ({ onFormSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form role="form" onSubmit={handleSubmit(onSubmit)}>
       <div className={cx({ 'govuk-form-group--error': Boolean(formError) })}>
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-one-half">
