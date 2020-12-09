@@ -7,17 +7,12 @@ jest.mock('utils/api/residents', () => ({
 }));
 
 describe('Search component', () => {
-  const props = {
-    onFormSubmit: jest.fn(),
-  };
   it('should show load more button on successful search', async () => {
-    const { getByRole, getByLabelText, queryByText, debug } = render(
-      <Search {...props}></Search>
-    );
+    const { getByRole, getByLabelText, queryByText } = render(<Search />);
     const firstNameInput = getByLabelText('First name:');
     fireEvent.change(firstNameInput, { target: { value: 'foo' } });
     expect(queryByText('load more')).not.toBeInTheDocument();
-    getResidents.mockImplementation(() => {
+    getResidents.mockImplementation(() =>
       Promise.resolve({
         residents: [
           {
@@ -27,12 +22,11 @@ describe('Search component', () => {
           },
         ],
         nextCursor: 'foo',
-      });
-    });
+      })
+    );
     await act(async () => {
       fireEvent.submit(getByRole('form'));
     });
-    debug();
     expect(queryByText('load more')).toBeInTheDocument();
   });
 });
