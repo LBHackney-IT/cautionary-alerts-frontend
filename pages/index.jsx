@@ -10,7 +10,7 @@ const SearchPage = ({ query }) => {
         <NextSeo title="Search" noindex />
 
         <p className="govuk-body govuk-!-margin-bottom-7">
-          Search for resident by name and/or postcode to see if we have a record
+          Search for resident by name and postcode to see if we have a record
           for them
         </p>
         <Search {...query} />
