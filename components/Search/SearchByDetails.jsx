@@ -11,7 +11,7 @@ const SearchByDetails = ({ onFormSubmit }) => {
   const onSubmit = async (formData) => {
     setFormError(null);
 
-    return formData.first_name && formData.postcode && formData.last_name
+    return !formData.first_name && !formData.postcode && !formData.last_name
       ? setFormError('You need to enter a first or last name')
       : onFormSubmit(formData);
   };
