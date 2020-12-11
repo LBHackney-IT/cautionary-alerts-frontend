@@ -5,15 +5,15 @@ import { useForm } from 'react-hook-form';
 import { Button, TextInput } from 'components/Form';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
-const SearchByDetails = ({ onFormSubmit }) => {
+const SearchByDetails = ({ setFormData }) => {
   const [formError, setFormError] = useState();
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = async (formData) => {
     setFormError(null);
 
-    return !formData.first_name && !formData.last_name
+    return formData.first_name && formData.last_name
       ? setFormError('You need to enter a first or last name')
-      : onFormSubmit(formData);
+      : setFormData(formData);
   };
 
   return (
@@ -40,7 +40,19 @@ const SearchByDetails = ({ onFormSubmit }) => {
           </div>
         </div>
 
-        {formError && <ErrorMessage label={formError} />}
+        <div className="govuk-grid-row">
+          <div className="govuk-grid-column-one-half">
+            <TextInput
+              label="Postcode:"
+              labelSize="s"
+              name="postcode"
+              error={errors.postcode}
+              register={register}
+            />
+          </div>
+
+          {formError && <ErrorMessage label={formError} />}
+        </div>
       </div>
       <Button label="Search" type="submit" />
     </form>
@@ -48,7 +60,8 @@ const SearchByDetails = ({ onFormSubmit }) => {
 };
 
 SearchByDetails.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 export default SearchByDetails;
