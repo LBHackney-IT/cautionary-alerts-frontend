@@ -11,7 +11,7 @@ const SearchByDetails = ({ onFormSubmit }) => {
   const onSubmit = async (formData) => {
     setFormError(null);
 
-    return !formData.first_name && !formData.last_name
+    return !formData.first_name && !formData.postcode && !formData.last_name
       ? setFormError('You need to enter a first or last name')
       : onFormSubmit(formData);
   };
@@ -39,7 +39,17 @@ const SearchByDetails = ({ onFormSubmit }) => {
             />
           </div>
         </div>
-
+        <div className="govuk-grid-row">
+          <div className="govuk-grid-column-one-half">
+            <TextInput
+              label="Postcode:"
+              labelSize="s"
+              name="postcode"
+              error={errors.postcode}
+              register={register}
+            />
+          </div>
+        </div>
         {formError && <ErrorMessage label={formError} />}
       </div>
       <Button label="Search" type="submit" />
