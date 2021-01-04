@@ -60,6 +60,12 @@ const PersonDetails = ({ person, emailAddresses }) => (
           </dd>
         </div>
       )}
+      {person.tenureType && (
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Tenure Type</dt>
+          <dd className="govuk-summary-list__value">{person.tenureType}</dd>
+        </div>
+      )}
     </dl>
   </>
 );
@@ -68,6 +74,7 @@ PersonDetails.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   tenancyReference: PropTypes.string,
+  tenureType: PropTypes.string,
   address: PropTypes.arrayOf(PropTypes.shape({})),
   phoneNumbers: PropTypes.arrayOf(PropTypes.shape({})),
   emailAddresses: PropTypes.arrayOf(PropTypes.shape({})),
