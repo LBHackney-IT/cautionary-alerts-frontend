@@ -44,20 +44,24 @@ const PersonDetails = ({ person, emailAddresses }) => (
             ))}
         </dd>
       </div>
-      {person?.phoneNumbers[0] && (
+      {person.phoneNumbers?.length > 0 && (
         <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key">Phone Number/s</dt>
+          <dt className="govuk-summary-list__key">Phone Number</dt>
           <dd className="govuk-summary-list__value">
-            <p>{person?.phoneNumbers[0].phoneNumber}</p>
+            <ul className="govuk-list">
+              {person.phoneNumbers.map(({ phoneNumber, phoneType }) => (
+                <li key={phoneNumber}>
+                  {phoneNumber} - {phoneType}
+                </li>
+              ))}
+            </ul>
           </dd>
         </div>
       )}
-      {person?.phoneNumbers[1]?.phoneNumber && (
+      {person.tenureType && (
         <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key"></dt>
-          <dd className="govuk-summary-list__value">
-            <p>{person?.phoneNumbers[1].phoneNumber}</p>
-          </dd>
+          <dt className="govuk-summary-list__key">Tenure Type</dt>
+          <dd className="govuk-summary-list__value">{person.tenureType}</dd>
         </div>
       )}
       {person.tenureType && (
