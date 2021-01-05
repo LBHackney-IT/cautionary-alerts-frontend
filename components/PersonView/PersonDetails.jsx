@@ -64,12 +64,6 @@ const PersonDetails = ({ person, emailAddresses }) => (
           <dd className="govuk-summary-list__value">{person.tenureType}</dd>
         </div>
       )}
-      {person.tenureType && (
-        <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key">Tenure Type</dt>
-          <dd className="govuk-summary-list__value">{person.tenureType}</dd>
-        </div>
-      )}
     </dl>
   </>
 );
