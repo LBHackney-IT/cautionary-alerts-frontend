@@ -13,7 +13,7 @@
     "format": "prettier '**/*.{js,jsx,css,scss,md}' --write --list-different"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "cookie": "^0.4.1",
     "govuk-frontend": "^3.9.1",
     "jsonwebtoken": "^8.5.1",
